@@ -6,4 +6,15 @@ const getAll = async () => {
   return allClients;
 }
 
-module.exports = { getAll };
+const getClientByCode = async (codCliente) => {
+  const query = `
+  SELECT cod_cliente AS CodCliente,
+  saldo AS Saldo
+  FROM StockMarketAPI.Clientes
+  WHERE cod_cliente = ?`;
+  const [clientBycode] = await connection.execute(query, [codCliente]);
+  return clientBycode[0];
+};
+
+
+module.exports = { getAll, getClientByCode };
