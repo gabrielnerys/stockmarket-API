@@ -6,4 +6,11 @@ const getAll = async (_req, res) => {
   return res.status(200).json(allUsers);
 };
 
-module.exports = { getAll };
+const getClientByCode = async (req, res) => {
+  const { codCliente } = req.params
+  const clientByCode = await Clients.getClientByCode(codCliente);
+  if (!clientByCode) return res.status(404).json({ message: 'Cliente não encontrado' });
+  return res.status(200).json(clientByCode);
+};
+
+module.exports = { getAll, getClientByCode };
