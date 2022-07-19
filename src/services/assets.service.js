@@ -4,4 +4,6 @@ const getAll = () => Assets.getAll();
 
 const findByClientCode = (codCliente) => Assets.findByClientCode(codCliente);
 
-module.exports = { getAll, findByClientCode };
+const findByAssetCode = (codAtivo) => Assets.findByAssetCode(codAtivo);
+
+module.exports = { getAll, findByClientCode, findByAssetCode };
