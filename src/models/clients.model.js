@@ -16,5 +16,12 @@ const getClientByCode = async (codCliente) => {
   return clientBycode[0];
 };
 
+const newDeposit = async (codCliente, valor) => {
+  const query = `UPDATE StockMarketAPI.Clientes
+  SET saldo = saldo + ?
+  WHERE cod_cliente = ? `;
+  const deposit = await connection.execute(query, [valor, codCliente]);
+  return deposit;
+};
 
-module.exports = { getAll, getClientByCode };
+module.exports = { getAll, getClientByCode, newDeposit };
