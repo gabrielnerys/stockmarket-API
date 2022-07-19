@@ -1,7 +1,5 @@
-// const Clients = require('../models/clients.model');
+const Assets = require('../models/assets.model');
 
-// const getAll = () => Clients.getAll();
+const getAll = () => Assets.getAll();
 
-// const findByClientCode = (codCliente) => Clients.findByClientCode(codCliente);
-
-// module.exports = { getAll, findByClientCode };
+module.exports = { getAll };
