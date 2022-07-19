@@ -6,4 +6,11 @@ const getAll = async (_req, res) => {
   return res.status(200).json(allAssets);
 };
 
-module.exports = { getAll };
+const findByClientCode = async (req, res) => {
+  const { codCliente } = req.params
+  const clientByCode = await Assets.findByClientCode(codCliente);
+  if (!clientByCode) return res.status(404).json({ message: 'Cliente não encontrado' });
+  return res.status(200).json(clientByCode);
+};
+
+module.exports = { getAll, findByClientCode };
