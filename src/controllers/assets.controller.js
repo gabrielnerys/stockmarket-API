@@ -13,4 +13,11 @@ const findByClientCode = async (req, res) => {
   return res.status(200).json(clientByCode);
 };
 
-module.exports = { getAll, findByClientCode };
+const findByAssetCode = async (req, res) => {
+  const { codAtivo } = req.params;
+  const request = await Assets.findByAssetCode(codAtivo);
+  if (!request) return res.status(500).json({ message: 'Deu ruim' });
+  return res.status(200).json(request);
+};
+
+module.exports = { getAll, findByClientCode, findByAssetCode };
