@@ -10,5 +10,6 @@ routes.post('/conta/deposito', Clients.newDeposit);
 routes.post('/conta/saque', Clients.newWithdraw);
 
 routes.get('/ativos/idCliente/:codCliente', Assets.findByClientCode);
+routes.get('/ativos/idAtivo/:codAtivo', Assets.findByAssetCode);
 
 module.exports = routes;
