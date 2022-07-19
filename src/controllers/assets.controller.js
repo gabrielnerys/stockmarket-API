@@ -16,7 +16,7 @@ const findByClientCode = async (req, res) => {
 const findByAssetCode = async (req, res) => {
   const { codAtivo } = req.params;
   const request = await Assets.findByAssetCode(codAtivo);
-  if (!request) return res.status(500).json({ message: 'Deu ruim' });
+  if (!request) return res.status(404).json({ message: 'Ativo não encontrado' });
   return res.status(200).json(request);
 };
 
