@@ -4,4 +4,6 @@ const getAll = () => Clients.getAll();
 
 const getClientByCode = (codCliente) => Clients.getClientByCode(codCliente);
 
-module.exports = { getAll, getClientByCode };
+const newDeposit = (codCliente, valor) => Clients.newDeposit(codCliente, valor);
+
+module.exports = { getAll, getClientByCode, newDeposit };
