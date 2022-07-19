@@ -21,5 +21,12 @@ const findByClientCode = async (codCliente) => {
   return request;
 };
 
+const findByAssetCode = async (codAtivo) => {
+  const query = `SELECT cod_ativo AS codAtivo, qtde_ativo AS qtdeAtivo, valor_unit AS valor
+  FROM StockMarketAPI.Ativos WHERE cod_ativo = ?`;
+  const [request] = await connection.execute(query, [codAtivo]);
+  return request[0];
+};
 
-module.exports = { getAll, findByClientCode };
+
+module.exports = { getAll, findByClientCode, findByAssetCode };
