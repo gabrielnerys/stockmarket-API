@@ -1,9 +1,9 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const query = `SELECT * FROM StockMarketAPI.Clientes;`;
-  const [allClients] = await connection.execute(query);
-  return allClients;
+  const query = `SELECT * FROM StockMarketAPI.Ativos;`;
+  const [allAssets] = await connection.execute(query);
+  return allAssets;
 }
 
 const findByClientCode = async (codCliente) => {
