@@ -16,8 +16,17 @@ const getClientByCode = async (req, res) => {
 const newDeposit = async (req, res) => {
   const { codCliente, valor } = req.body;
   const deposit = await Clients.newDeposit(codCliente, valor);
+  const { Saldo } = await Clients.getClientByCode(codCliente); 
   if (!deposit) return res.status(400).json({ message: 'Não foi possível completar sua solicitação' });
-  return res.status(200).json({ message: 'Deposito realizado com sucesso' });
+  return res.status(200).json({ message: `Saque realizado com sucesso! Saldo atual: R$ ${Saldo}` });
 }
 
-module.exports = { getAll, getClientByCode, newDeposit };
+const newWithdraw = async (req, res) => {
+  const { codCliente, valor } = req.body;
+  const withdraw = await Clients.newWithdraw(codCliente, valor);
+  const { Saldo } = await Clients.getClientByCode(codCliente); 
+  if (!withdraw) return res.status(400).json({ message: 'Não foi possível completar sua solicitação' });
+  return res.status(200).json({ message: `Saque realizado com sucesso! Saldo atual: R$ ${Saldo}` });
+}
+
+module.exports = { getAll, getClientByCode, newDeposit, newWithdraw };
