@@ -11,7 +11,7 @@ const validateSale = async (req, res, next) => {
   if (!filteredAsset) return res.status(404).json({ message: `O cliente não possui ativos de código ${codAtivo} disponíveis para venda.`});
 
   if(qtdeAtivo > filteredAsset.qtdeAtivo) {
-    return res.status(400).json({ message: `Quantidade solicitada para venda é maior que a quantidade disponivel.`})
+    return res.status(400).json({ message: `Quantidade solicitada para venda é maior que a quantidade disponivel.`});
   }
   next();
 }

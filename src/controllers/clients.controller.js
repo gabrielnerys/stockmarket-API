@@ -18,7 +18,7 @@ const newDeposit = async (req, res) => {
   const deposit = await Clients.newDeposit(codCliente, valor);
   const { Saldo } = await Clients.getClientByCode(codCliente); 
   if (!deposit) return res.status(400).json({ message: 'Não foi possível completar sua solicitação' });
-  return res.status(200).json({ message: `Saque realizado com sucesso! Saldo atual: R$ ${Saldo}` });
+  return res.status(200).json({ message: `Depósito realizado com sucesso! Saldo atual: R$ ${Saldo}` });
 }
 
 const newWithdraw = async (req, res) => {
