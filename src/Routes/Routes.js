@@ -13,7 +13,6 @@ const { authenticateToken } = require('../middlewares/token.validation');
 
 routes.post('/login', loginValidation, authGenerator)
 
-// routes.get('/conta/clientes', authenticateToken, Clients.getAll);
 routes.get('/conta/:codCliente', authenticateToken, Clients.getClientByCode);
 routes.post('/conta/deposito', authenticateToken, depositValidation, Clients.newDeposit);
 routes.post('/conta/saque', authenticateToken, withdrawValidation, Clients.newWithdraw);
