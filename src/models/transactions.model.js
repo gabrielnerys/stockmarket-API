@@ -6,4 +6,4 @@ const insertSale = async (codCliente, codAtivo, qtdeAtivo) => {
   return newSale;
 }
 
-module.exports = { insertSale }
+module.exports = { insertSale };
