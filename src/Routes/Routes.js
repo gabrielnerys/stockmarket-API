@@ -14,7 +14,7 @@ routes.get('/ativos', Assets.getAll);
 routes.get('/ativos/idCliente/:codCliente', Assets.findByClientCode);
 routes.get('/ativos/idAtivo/:codAtivo', Assets.findByAssetCode);
 
+routes.post('/investimentos/comprar', Transactions.insertPurchase);
 routes.post('/investimentos/vender', Transactions.insertSale);
-
 
 module.exports = routes;
