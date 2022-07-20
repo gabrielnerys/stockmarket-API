@@ -1,4 +1,4 @@
-const Transactions = require('../services/transactions.services');
+const Transactions = require('../services/transactions.service');
 
 const insertPurchase = async (req, res) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
