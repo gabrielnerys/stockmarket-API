@@ -1,4 +1,4 @@
-const Assets = require('../services/assets.service')
+const Assets = require('../services/assets.service');
 
 const validatePurchase = async (req, res, next) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
@@ -16,4 +16,4 @@ const validatePurchase = async (req, res, next) => {
   next();
 }
 
-module.exports = { validatePurchase }
+module.exports = { validatePurchase };
