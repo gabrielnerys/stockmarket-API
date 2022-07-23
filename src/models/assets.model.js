@@ -1,28 +1,43 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const query = `SELECT * FROM StockMarketAPI.Ativos;`;
+  const query = `
+  SELECT cod_ativo AS CodAtivo,
+  simbolo AS Simbolo,
+  nome_ativo AS NomeAtivo,
+  valor_unit AS Valor,
+  qtde_ativo AS QtdeAtivo 
+  FROM StockMarketAPI.Ativos;`;
   const [allAssets] = await connection.execute(query);
   return allAssets;
 }
 
 const findByClientCode = async (codCliente) => {
-  const query = `
+  const query2 = `
   SELECT c.cod_cliente AS CodCliente,
   c.cod_ativo AS CodAtivo, 
-  ROUND(SUM(c.qtde_comprada)/2) - ROUND(SUM(v.qtde_vendida)/2) AS qtdeAtivo,
-  a.valor_unit AS Valor
-  FROM StockMarketAPI.Compra AS c
-  INNER JOIN StockMarketAPI.Venda AS v ON c.cod_cliente = v.cod_cliente
-  INNER JOIN StockMarketAPI.Ativos AS a ON a.cod_ativo = c.cod_ativo
+  c.soma - v.soma AS QtdeAtivo, 
+  Ativos.valor_unit AS Valor
+  FROM (
+  SELECT SUM(Compra.qtde_comprada) AS soma, 
+  Compra.cod_ativo, 
+  Compra.cod_cliente FROM StockMarketAPI.Compra 
+  GROUP BY Compra.cod_ativo, Compra.cod_cliente) AS c
+  INNER JOIN (
+  SELECT SUM(Venda.qtde_vendida) as soma, 
+  Venda.cod_ativo, Venda.cod_cliente FROM StockMarketAPI.Venda 
+  GROUP BY Venda.cod_ativo, Venda.cod_cliente) AS v
+  ON (v.cod_ativo = c.cod_ativo AND v.cod_cliente = c.cod_cliente)
+  INNER JOIN StockMarketAPI.Ativos ON (Ativos.cod_ativo = c.cod_ativo)
   WHERE c.cod_cliente = ?
-  GROUP BY c.cod_cliente, c.cod_ativo;`;
-  const [request] = await connection.execute(query, [codCliente]);
+  ORDER BY c.cod_cliente;`;
+  const [request] = await connection.execute(query2, [codCliente]);
   return request;
 };
 
 const findByAssetCode = async (codAtivo) => {
-  const query = `SELECT cod_ativo AS codAtivo, qtde_ativo AS qtdeAtivo, valor_unit AS valor
+  const query = `
+  SELECT cod_ativo AS CodAtivo, qtde_ativo AS QtdeAtivo, valor_unit AS Valor
   FROM StockMarketAPI.Ativos WHERE cod_ativo = ?`;
   const [request] = await connection.execute(query, [codAtivo]);
   return request[0];
