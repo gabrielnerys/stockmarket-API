@@ -27,7 +27,7 @@ const jwtConfig = {
 //   next();
 // };
 
-// Autenticação padrão para Postman
+// Autenticação padrão para Postman ou Insomnia
 
 const authenticateToken = async (req, res, next) => {
   const token = req.headers.authorization;
