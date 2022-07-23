@@ -7,9 +7,13 @@ const swaggerOptions = {
       description: "Documentação de API de Mercado de ações com Swagger",
       version: "1.0"
     },
-    server: [{
+    servers: [{
       url: "https://localhost:3000",
       description: "Local Server"
+    },
+    {
+      url: "https://apistockmarkets.herokuapp.com",
+      description: "Api Server"
     }],
     components: {
       securitySchemes: {
