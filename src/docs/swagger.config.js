@@ -8,10 +8,6 @@ const swaggerOptions = {
       version: "1.0"
     },
     servers: [{
-      url: "https://localhost:3000",
-      description: "Local Server"
-    },
-    {
       url: "https://apistockmarkets.herokuapp.com",
       description: "Api Server"
     }],
