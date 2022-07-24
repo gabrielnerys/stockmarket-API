@@ -1,0 +1,16 @@
+
+<!-- OBS: Apague "Example" do nome ".env Example" e retire qualquer espaço para que funcione corretamente.  -->
+
+### DATABASE VARIABLES
+
+MYSQL_HOST=localhost
+MYSQL_USER= root
+MYSQL_PASSWORD=SUASENHADOMYSQL
+
+### API VARIABLES
+
+API_PORT=3000
+
+### SECRET VARIABLES
+
+JWT_SECRET=SUASENHASECRETAAQUI
