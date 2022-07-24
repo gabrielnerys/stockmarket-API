@@ -169,7 +169,7 @@ routes.post('/conta/saque', authenticateToken, withdrawValidation, Clients.newWi
  */
 
 
-routes.get('/ativos', Assets.getAll);
+routes.get('/ativos', authenticateToken, Assets.getAll);
 /**
  * @swagger
  *  /ativos:
