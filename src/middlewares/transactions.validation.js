@@ -14,9 +14,9 @@ const withdrawValidation = async (req, res, next) => {
 
   const getClientByCode = await Clients.getClientByCode(codCliente);
 
-  if (!getClientByCode) return res.status(400).json({ message: `Cliente de código ${codCliente} não encontrado.`});
   if (!codCliente) return res.status(400).json({ message: `O campo 'codCliente' não pode estar vazio.`});
   if (!valor) return res.status(400).json({ message: `O campo 'valor' não pode estar vazio.`});
+  if (!getClientByCode) return res.status(400).json({ message: `Cliente de código ${codCliente} não encontrado.`});
 
   if (valor > getClientByCode.Saldo) return res.status(400)
     .json({ message: `Valor disponivel para saque é inferior a quantidade solicitada.`})
