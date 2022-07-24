@@ -7,13 +7,13 @@ const loginValidation = async (req, res, next) => {
 
   if (!email) return res.status(400).json({ message: `O campo 'email' não pode estar vazio.`});
   if (!senha) return res.status(400).json({ message: `O campo 'senha' não pode estar vazio.`});
-  if (!regexEmail.test(email)) return res.status(400).json({ message: `O email precisa ser um email válido.`});
-  if (senha.lenght < 6) return res.status(400).json({ message: `O campo senha deve ter pelo menos seis caracteres.`});
+  if (!regexEmail.test(email)) return res.status(400).json({ message: `O 'email' precisa ser um email válido.`});
+  if (senha.lenght < 6) return res.status(400).json({ message: `O campo 'senha' deve ter pelo menos seis caracteres.`});
 
   const getClients = await Clients.getAll();
   const [validEmail] = getClients.filter((a) => a.email === email);
 
-  if (!validEmail) return res.status(400).json({ message: `O email informado não foi localizado`});
+  if (!validEmail) return res.status(400).json({ message: `O 'email' informado não foi localizado`});
   if (validEmail.senha !== senha) return res.status(400).json({ message: `Senha inválida.`});
 
   next();
