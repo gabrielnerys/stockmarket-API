@@ -160,11 +160,11 @@ Outros recursos utilizados foram:
   
   * Execute o código abaixo no terminal
     ```
-    git clone git@github.com:gabrielnerys/desafio-tecnico-XP.git
+    git clone git@github.com:gabrielnerys/stockmarket-API.git
     ```
   * Entre na pasta do repositório que você acabou de clonar:
     ```
-    cd desafio-tecnico-XP
+    cd stockmarket-API
     ```
 
 2. Instale as dependências
